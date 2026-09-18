@@ -18,7 +18,9 @@ function serverlessApiPlugin(): Plugin {
           const pathname = urlObj.pathname;
 
           let handlerModule;
-          if (pathname === '/api/token') {
+          if (pathname === '/api/health') {
+            handlerModule = await import('./api/health');
+          } else if (pathname === '/api/token') {
             handlerModule = await import('./api/token');
           } else if (pathname === '/api/properties/ping' || pathname === '/api/ping') {
             handlerModule = await import('./api/properties/ping');

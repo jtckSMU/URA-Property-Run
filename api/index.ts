@@ -1,6 +1,7 @@
 import tokenHandler from './token';
 import uraHandler from './ura';
 import pingHandler from './properties/ping';
+import healthHandler from './health';
 
 /**
  * Root Serverless Entry: /api
@@ -8,6 +9,10 @@ import pingHandler from './properties/ping';
  */
 export default async function handler(req: any, res?: any) {
   const url = req.url || '';
+
+  if (url.includes('/health')) {
+    return healthHandler(req, res);
+  }
 
   if (url.includes('/token')) {
     return tokenHandler(req, res);
