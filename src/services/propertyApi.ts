@@ -53,6 +53,9 @@ export class PropertyApiService {
       } else {
         headers[this.config.authHeaderName] = this.config.apiKey;
       }
+      // Pass URA headers so serverless handler receives user key if provided in UI
+      headers['AccessKey'] = this.config.apiKey;
+      headers['x-ura-access-key'] = this.config.apiKey;
     }
 
     return headers;

@@ -219,15 +219,11 @@ export const ApiConfigModal: React.FC<ApiConfigModalProps> = ({
               <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-200 leading-relaxed">
                 <p className="font-semibold flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  Developer Note: Placeholder Architecture
+                  URA Serverless Connection Ready (/api)
                 </p>
-                <p className="mt-1 text-stone-300 text-[11px]">
-                  The application is configured to call{' '}
-                  <code className="px-1 py-0.5 rounded bg-stone-900 font-mono text-amber-300">
-                    GET {baseUrl}/transactions
-                  </code>
-                  . You can point this to your local backend, cloud service, or proxy to Singapore
-                  URA Realis.
+                <p className="mt-1 text-stone-300 text-[11px] leading-relaxed">
+                  Serverless endpoints are now active in the <code className="px-1 py-0.5 rounded bg-stone-900 font-mono text-amber-300">/api</code> folder.
+                  The connector automatically trades your <code className="font-mono text-amber-300">AccessKey</code> for today's daily <code className="font-mono text-amber-300">Token</code> and sends both headers to query <code className="font-mono text-amber-300">PMI_Resi_Transaction</code>.
                 </p>
               </div>
 
@@ -243,12 +239,12 @@ export const ApiConfigModal: React.FC<ApiConfigModalProps> = ({
                     type="text"
                     value={baseUrl}
                     onChange={(e) => setBaseUrl(e.target.value)}
-                    placeholder="e.g. /api/properties or https://api.yourdomain.com/v1"
+                    placeholder="e.g. /api/properties or /api/ura"
                     className="w-full pl-9 pr-4 py-2 bg-stone-950 border border-stone-800 rounded-lg text-stone-100 font-mono focus:outline-none focus:border-amber-500/50"
                   />
                 </div>
                 <p className="text-[11px] text-stone-500 mt-1">
-                  Default placeholder route: <span className="font-mono">/api/properties</span>
+                  Serverless routes: <span className="font-mono text-stone-400">/api/properties</span> or <span className="font-mono text-stone-400">/api/ura</span>
                 </p>
               </div>
 
@@ -263,14 +259,14 @@ export const ApiConfigModal: React.FC<ApiConfigModalProps> = ({
                     type="text"
                     value={authHeaderName}
                     onChange={(e) => setAuthHeaderName(e.target.value)}
-                    placeholder="Authorization or X-API-Key"
+                    placeholder="AccessKey or Authorization"
                     className="w-full px-3 py-2 bg-stone-950 border border-stone-800 rounded-lg text-stone-100 font-mono focus:outline-none focus:border-amber-500/50"
                   />
                 </div>
 
                 <div>
                   <label className="block font-medium text-stone-300 mb-1">
-                    API Key / Token (Optional)
+                    URA AccessKey / API Key
                   </label>
                   <div className="relative">
                     <Key className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -279,7 +275,7 @@ export const ApiConfigModal: React.FC<ApiConfigModalProps> = ({
                       type="password"
                       value={apiKey}
                       onChange={(e) => setApiKey(e.target.value)}
-                      placeholder="e.g. Bearer token or URA AccessKey"
+                      placeholder="Enter URA AccessKey (or set URA_ACCESS_KEY in .env)"
                       className="w-full pl-9 pr-4 py-2 bg-stone-950 border border-stone-800 rounded-lg text-stone-100 font-mono focus:outline-none focus:border-amber-500/50"
                     />
                   </div>
